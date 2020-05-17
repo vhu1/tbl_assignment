@@ -16,5 +16,16 @@ namespace Graphics_Object
         {
             InitializeComponent();
         }
+
+        public static int add(int a , int b)
+        {
+            return a + b;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int b = add(2, 5);
+            label1.Text = ""+b;
+        }
     }
 }
