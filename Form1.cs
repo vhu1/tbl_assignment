@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Design;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Graphics_Object
@@ -19,15 +12,17 @@ namespace Graphics_Object
         }
         private void Form1_Load(object sender, EventArgs e )
         {
-
             string[] passedInArgs = Environment.GetCommandLineArgs();
+            foreach(string s in passedInArgs)
+            {
+                Console.WriteLine(s);
+            }
             if(passedInArgs.Length < 2)
             {
                 MessageBox.Show("Please pass and valid argument to load shapes");
                 this.Close();
                 return;
             }
-
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -37,7 +32,7 @@ namespace Graphics_Object
             {
 
                 GetShapeFactory g = new GetShapeFactory();
-                g.getShape(passedInArgs[2]).draw(e);
+                g.getShape(passedInArgs[2]).draw(e , passedInArgs[3]);
 
             }
             else
