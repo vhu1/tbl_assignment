@@ -17,7 +17,6 @@ namespace Graphics_Object
         public void draw(PaintEventArgs e, string dimension)
         {
             string[] splitString = dimension.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-            
             Pen red = new Pen(Color.Red , 3);
             System.Drawing.Rectangle circle = new System.Drawing.Rectangle(20, 20, int.Parse(splitString[0]), int.Parse(splitString[0]));
             Graphics g = e.Graphics;
@@ -28,11 +27,32 @@ namespace Graphics_Object
     {
         public void draw(PaintEventArgs e, string dimension)
         {
+            string[] splitString = dimension.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+            int a = int.Parse(splitString[0]);
+            int b = int.Parse(splitString[1]);
+            int c = int.Parse(splitString[2]);
+            if(a == b && b ==c )
+            {
+                a = a + 50;
+                b = b + 60;
+                c = c + 70;
+            }
             Pen red = new Pen(Color.Red);
             Graphics g = e.Graphics;
-            g.DrawLine(red, 10, 10, 200, 100);
-            g.DrawLine(red, 10, 10, 100, 500);
-            g.DrawLine(red, 100, 500, 200, 100);
+            
+            Point point1 = new Point(a , b);
+            Point point2 = new Point(b, c);
+            Point point3 = new Point(a ,c);
+
+            Point[] curvePoints =
+                     {
+                 point1,
+                 point2,
+                 point3,
+
+             };
+            g.DrawPolygon(red, curvePoints);
+            
         }
     }
 
