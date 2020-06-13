@@ -75,6 +75,7 @@ namespace Graphics_Object
         public void draw(PaintEventArgs e , string dimension , string position)
         {
            string[] splitString =  dimension.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+           string[] positionSplit = position.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
             int[] dim = new int[2];
             for(int i = 0; i<2; i++)
             {
@@ -82,7 +83,7 @@ namespace Graphics_Object
             }
             Pen red = new Pen(Color.Red);
             Graphics g = e.Graphics;
-            System.Drawing.Rectangle rectangle = new System.Drawing.Rectangle(0, 0, dim[0], dim[1]);
+            System.Drawing.Rectangle rectangle = new System.Drawing.Rectangle(int.Parse(positionSplit[0]), int.Parse(positionSplit[1]) , dim[0], dim[1]);
             g.DrawRectangle(red, rectangle);
         }
     }

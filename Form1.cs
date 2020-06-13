@@ -62,18 +62,26 @@ namespace Graphics_Object
             {
                 foreach (string st in lines)
                 {
-                    if (st.Contains("clear"))
+                    if (st.Contains("reset"))
                     {
                         clearDrawingArea();
                     }
+                    
                     if(st.Contains("Draw" , StringComparison.OrdinalIgnoreCase))
                     {
                         foreach (string st1 in this.shapes)
                         {
+                            string tempdim = prepareParams(st, sp);
                             if (st.Contains(st1, StringComparison.OrdinalIgnoreCase))
                             {
+                                if(st1.Equals("Rectangle" , StringComparison.OrdinalIgnoreCase)){
+                                    string[] paramsSplit = tempdim.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+                                    if(paramsSplit.Length != 2){
+                                      MessageBox.Show($"Rectangle should have only 2 instead {paramsSplit.Length} parameters passed");
+                                    }
+                                }
+
                                 sp.Shapename = st1;
-                                string tempdim = prepareParams(st, sp);
                                 sp.Dimension = tempdim;
                                 drawShapeList.Add(sp);
                             }
@@ -93,8 +101,8 @@ namespace Graphics_Object
             if (drawShapeList.Count > 0)
             {
                 foreach(Shape sp in drawShapeList)
-                {
-                    shapeFactory.getShape(sp.Shapename).draw(e, sp.Dimension , sp.position);
+                {       
+                   shapeFactory.getShape(sp.Shapename).draw(e, sp.Dimension , sp.position);
                 }
             }
         }
