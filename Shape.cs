@@ -8,6 +8,20 @@ using System.Windows.Forms;
 
 namespace Graphics_Object
 {
+    public class Shape
+    {
+        string shapename;
+        string dimension;
+        public string Shapename { get; set; }
+        public string Dimension { get; set; }
+        public Shape()
+        {
+
+        }
+            
+
+    }
+
     interface ICustomObject
     {
         void draw(PaintEventArgs e , string dimension);
@@ -72,7 +86,13 @@ namespace Graphics_Object
             g.DrawRectangle(red, rectangle);
         }
     }
-
+    public static class StringExtensions
+    {
+        public static bool Contains(this string source, string toCheck, StringComparison comp)
+        {
+            return source?.IndexOf(toCheck, comp) >= 0;
+        }
+    }
     class GetShapeFactory
     {
         public ICustomObject getShape(String geomObj)
