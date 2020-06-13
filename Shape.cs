@@ -10,13 +10,12 @@ namespace Graphics_Object
 {
     public class Shape
     {
-        string shapename;
-        string dimension;
+        public string position { get; set; }
         public string Shapename { get; set; }
         public string Dimension { get; set; }
         public Shape()
         {
-
+            this.position = "0 0";          
         }
             
 
@@ -24,22 +23,23 @@ namespace Graphics_Object
 
     interface ICustomObject
     {
-        void draw(PaintEventArgs e , string dimension);
+        void draw(PaintEventArgs e , string dimension , string position);
     }
     class Circle : ICustomObject
     {
-        public void draw(PaintEventArgs e, string dimension)
+        public void draw(PaintEventArgs e, string dimension , string position)
         {
             string[] splitString = dimension.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+            string[] positionSplit = position.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
             Pen red = new Pen(Color.Red , 1);
-            System.Drawing.Rectangle circle = new System.Drawing.Rectangle(20, 20, int.Parse(splitString[0]), int.Parse(splitString[0]));
+            System.Drawing.Rectangle circle = new System.Drawing.Rectangle(int.Parse(positionSplit[0]), int.Parse(positionSplit[1]), int.Parse(splitString[0]), int.Parse(splitString[0]));
             Graphics g = e.Graphics;
             g.DrawEllipse(red, circle);
         }
     }
     class Triangle : ICustomObject
     {
-        public void draw(PaintEventArgs e, string dimension)
+        public void draw(PaintEventArgs e, string dimension, string position)
         {
             string[] splitString = dimension.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
             int a = int.Parse(splitString[0]);
@@ -72,7 +72,7 @@ namespace Graphics_Object
 
     class Rectangle : ICustomObject
     {
-        public void draw(PaintEventArgs e , string dimension)
+        public void draw(PaintEventArgs e , string dimension , string position)
         {
            string[] splitString =  dimension.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
             int[] dim = new int[2];
@@ -82,7 +82,7 @@ namespace Graphics_Object
             }
             Pen red = new Pen(Color.Red);
             Graphics g = e.Graphics;
-            System.Drawing.Rectangle rectangle = new System.Drawing.Rectangle(10, 10, dim[0], dim[1]);
+            System.Drawing.Rectangle rectangle = new System.Drawing.Rectangle(0, 0, dim[0], dim[1]);
             g.DrawRectangle(red, rectangle);
         }
     }
