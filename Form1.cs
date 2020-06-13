@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
@@ -24,34 +25,8 @@ namespace Graphics_Object
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            //string[] passedInArgs = Environment.GetCommandLineArgs();
-            //foreach(string s in passedInArgs)
-            //{
-            //    Console.WriteLine(s);
-            //}
-            //if(passedInArgs.Length < 2)
-            //{
-            //    MessageBox.Show("Please pass and valid argument to load shapes");
-
-            //}
+       
         }
-
-        //private void Form1_Paint(object sender, PaintEventArgs e)
-        //{
-        //    string[] passedInArgs = Environment.GetCommandLineArgs();
-        //    if (passedInArgs.Contains("run"))
-        //    {
-
-        //        GetShapeFactory g = new GetShapeFactory();
-        //        g.getShape(passedInArgs[2]).draw(e , passedInArgs[3]);
-
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Please pass and valid argument to load shapes");
-
-        //    }
-        //}
 
         private void txtCmdbox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -61,10 +36,11 @@ namespace Graphics_Object
             {
                 foreach (string st in lines)
                 {
-                   
+                    
                     if (st.Contains("Draw", StringComparison.OrdinalIgnoreCase))
                         foreach (string st1 in shapes)
                         {
+                            
                             if (st.Contains(st1, StringComparison.OrdinalIgnoreCase))
                             {
                                 sp.Shapename = st1;
@@ -75,8 +51,9 @@ namespace Graphics_Object
                                 {
                                     if (st[i] == ')')
                                         dimst = false;
-                                    if (dimst && st[i]!=',' && st[i]!=' ')
+                                    if (dimst && st[i]!=',')
                                     {
+                                        Debug.WriteLine(st[i]);
                                         tempdim = tempdim + st[i];
                                     }
                                     if(st[i] == ',' && st[i] == ' ')
@@ -90,17 +67,14 @@ namespace Graphics_Object
                                         dimst = false;
                                 }
                                 sp.Dimension = tempdim;
+                                Debug.WriteLine(tempdim);
                                 drawShapeDime.Add(sp);
                             }
 
                         }
                 }
-
-
                 pnlCanvas.Refresh();
             }
-
-
         }
 
         private void pnlCanvas_Paint(object sender, PaintEventArgs e)
@@ -112,7 +86,6 @@ namespace Graphics_Object
                     g.getShape(sp.Shapename).draw(e, sp.Dimension);
                 }
             }
-
             //if (shape != null && dimensions != null)
             //{
             //    g.getShape(shape).draw(e, dimensions);
@@ -121,7 +94,5 @@ namespace Graphics_Object
             //}
 
         }
-
-
     }
 }

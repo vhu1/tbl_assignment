@@ -31,7 +31,7 @@ namespace Graphics_Object
         public void draw(PaintEventArgs e, string dimension)
         {
             string[] splitString = dimension.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-            Pen red = new Pen(Color.Red , 3);
+            Pen red = new Pen(Color.Red , 1);
             System.Drawing.Rectangle circle = new System.Drawing.Rectangle(20, 20, int.Parse(splitString[0]), int.Parse(splitString[0]));
             Graphics g = e.Graphics;
             g.DrawEllipse(red, circle);

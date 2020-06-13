@@ -28,3 +28,13 @@ D:\Graphics-Object\obj\Debug\Graphics-Object.csproj.GenerateResource.cache
 D:\Graphics-Object\obj\Debug\Graphics-Object.csproj.CoreCompileInputs.cache
 D:\Graphics-Object\obj\Debug\Graphics-Object.exe
 D:\Graphics-Object\obj\Debug\Graphics-Object.pdb
+C:\Users\ashis\Desktop\Graphics-Object\bin\Debug\Graphics-Object.exe.config
+C:\Users\ashis\Desktop\Graphics-Object\bin\Debug\Graphics-Object.exe
+C:\Users\ashis\Desktop\Graphics-Object\bin\Debug\Graphics-Object.pdb
+C:\Users\ashis\Desktop\Graphics-Object\obj\Debug\Graphics-Object.csprojAssemblyReference.cache
+C:\Users\ashis\Desktop\Graphics-Object\obj\Debug\Graphics_Object.Form1.resources
+C:\Users\ashis\Desktop\Graphics-Object\obj\Debug\Graphics_Object.Properties.Resources.resources
+C:\Users\ashis\Desktop\Graphics-Object\obj\Debug\Graphics-Object.csproj.GenerateResource.cache
+C:\Users\ashis\Desktop\Graphics-Object\obj\Debug\Graphics-Object.csproj.CoreCompileInputs.cache
+C:\Users\ashis\Desktop\Graphics-Object\obj\Debug\Graphics-Object.exe
+C:\Users\ashis\Desktop\Graphics-Object\obj\Debug\Graphics-Object.pdb
