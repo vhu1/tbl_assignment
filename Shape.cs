@@ -54,9 +54,9 @@ namespace Graphics_Object
             Pen red = new Pen(Color.Red);
             Graphics g = e.Graphics;
             
-            Point point1 = new Point(a , b);
-            Point point2 = new Point(b, c);
-            Point point3 = new Point(a ,c);
+            Point point1 = new Point(100 , 100);
+            Point point2 = new Point(100, 250);
+            Point point3 = new Point(50 ,50);
 
             Point[] curvePoints =
                      {
@@ -65,8 +65,7 @@ namespace Graphics_Object
                  point3,
 
              };
-            g.DrawPolygon(red, curvePoints);
-            
+            g.DrawPolygon(red, curvePoints); 
         }
     }
 

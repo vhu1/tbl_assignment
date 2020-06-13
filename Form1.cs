@@ -24,7 +24,17 @@ namespace Graphics_Object
             this.txtCmdBox.Text = "";
         }
 
-        private string prepareParams(string st , Shape sp)
+        public static int graphic_sub_circle(int a , int b)
+        {
+            return a - b;
+        }
+
+        public static int graphic_add_circle(int a , int b)
+        {
+            return a + b;
+        }
+
+        public static string prepareParams(string st , Shape sp)
         {
             bool dimst = false;
             string tempdim = "";
@@ -66,7 +76,15 @@ namespace Graphics_Object
                     {
                         clearDrawingArea();
                     }
-                    
+                    if(st.Contains("moveto", StringComparison.OrdinalIgnoreCase))
+                    {
+                        string tempdim = prepareParams(st , sp);
+                        string[] paramsSplit = tempdim.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+                        if(paramsSplit.Length != 2)
+                        {
+                            MessageBox.Show($"Moveto should have only 2 instead {paramsSplit.Length} parameters passed");
+                        }
+                    }
                     if(st.Contains("Draw" , StringComparison.OrdinalIgnoreCase))
                     {
                         foreach (string st1 in this.shapes)
@@ -77,10 +95,28 @@ namespace Graphics_Object
                                 if(st1.Equals("Rectangle" , StringComparison.OrdinalIgnoreCase)){
                                     string[] paramsSplit = tempdim.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
                                     if(paramsSplit.Length != 2){
-                                      MessageBox.Show($"Rectangle should have only 2 instead {paramsSplit.Length} parameters passed");
+                                        tempdim = "0";
+                                        this.txtCmdBox.Text = "";
+                                        MessageBox.Show($"Rectangle should have only 2 instead {paramsSplit.Length} parameters passed");
                                     }
                                 }
-
+                                if(st1.Equals("circle" , StringComparison.OrdinalIgnoreCase)){
+                                    string[] paramsSplit = tempdim.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+                                    if(paramsSplit.Length != 1){
+                                      tempdim = "0";
+                                      this.txtCmdBox.Text = "";
+                                      MessageBox.Show($"Circle should have only 1 instead {paramsSplit.Length} parameters passed");
+                                    }
+                                }
+                                if(st1.Equals("triangle" , StringComparison.OrdinalIgnoreCase)){
+                                    string[] paramsSplit = tempdim.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+                                    if(paramsSplit.Length != 3){
+                                        tempdim = "0";
+                                        this.txtCmdBox.Text = "";
+                                        MessageBox.Show($"Triangle should have only 1 instead {paramsSplit.Length} parameters passed");
+                                    }
+                                }
+                                
                                 sp.Shapename = st1;
                                 sp.Dimension = tempdim;
                                 drawShapeList.Add(sp);
@@ -120,7 +156,5 @@ namespace Graphics_Object
             fr.Bounds = Screen.PrimaryScreen.Bounds;
             this.Hide();
         }
-
-        
     }
 }
