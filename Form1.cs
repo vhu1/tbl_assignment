@@ -51,6 +51,7 @@ namespace Graphics_Object
         private void Form1_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+            this.Bounds = Screen.PrimaryScreen.Bounds;
         }
 
         private void txtCmdbox_KeyPress(object sender, KeyPressEventArgs e)
