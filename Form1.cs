@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -143,11 +144,6 @@ namespace Graphics_Object
             }
         }
 
-        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form1 fr = new Form1();
@@ -155,6 +151,32 @@ namespace Graphics_Object
             fr.WindowState = FormWindowState.Maximized;
             fr.Bounds = Screen.PrimaryScreen.Bounds;
             this.Hide();
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.InitialDirectory = "c:\\";
+            openFile.Filter = "Graphical Objects (.txt)|.txt";
+            openFile.RestoreDirectory = true;
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                txtCmdBox.Text = File.ReadAllText(openFile.FileName);
+            }
+        }
+
+        private void saveToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "Graphical Objects (.txt)|.txt";
+            if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                using (StreamWriter sw = File.CreateText(saveDialog.FileName))
+                {
+                    sw.WriteLine(txtCmdBox.Text);
+
+                }
+            }
         }
     }
 }
