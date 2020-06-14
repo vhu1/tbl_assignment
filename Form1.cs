@@ -24,17 +24,32 @@ namespace Graphics_Object
             this.drawShapeList = new List<Shape>();
             this.txtCmdBox.Text = "";
         }
-
+        /// <summary>
+        /// This takes two parameters and return difference
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns>This function return difference of two passed parameters</returns>
         public static int graphic_sub_circle(int a , int b)
         {
             return a - b;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static int graphic_add_circle(int a , int b)
         {
             return a + b;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="st"></param>
+        /// <param name="sp"></param>
+        /// <returns></returns>
         public static string prepareParams(string st , Shape sp)
         {
             bool dimst = false;
@@ -59,12 +74,21 @@ namespace Graphics_Object
             }
             return tempdim;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
             this.Bounds = Screen.PrimaryScreen.Bounds;
         }
-
+        /// <summary>
+        /// sanitizes command inputs and prepares parameters for graphics object 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtCmdbox_KeyPress(object sender, KeyPressEventArgs e)
         {
             Shape sp = new Shape();
@@ -132,7 +156,11 @@ namespace Graphics_Object
                 pnlCanvas.Refresh();
             }
         }
-
+        /// <summary>
+        /// Draw all graphics object in the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pnlCanvas_Paint(object sender, PaintEventArgs e)
         {
             if (drawShapeList.Count > 0)
@@ -143,7 +171,11 @@ namespace Graphics_Object
                 }
             }
         }
-
+        /// <summary>
+        /// when clear buttons is clicked all input is reset and clear drawing areas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form1 fr = new Form1();
@@ -152,7 +184,11 @@ namespace Graphics_Object
             fr.Bounds = Screen.PrimaryScreen.Bounds;
             this.Hide();
         }
-
+        /// <summary>
+        /// This load programs input from saved files
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
@@ -164,7 +200,11 @@ namespace Graphics_Object
                 txtCmdBox.Text = File.ReadAllText(openFile.FileName);
             }
         }
-
+        /// <summary>
+        /// This saves all command passed that can be load later
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             SaveFileDialog saveDialog = new SaveFileDialog();

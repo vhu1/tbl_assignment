@@ -38,3 +38,4 @@ C:\Users\ashis\Desktop\Graphics-Object\obj\Debug\Graphics-Object.csproj.Generate
 C:\Users\ashis\Desktop\Graphics-Object\obj\Debug\Graphics-Object.csproj.CoreCompileInputs.cache
 C:\Users\ashis\Desktop\Graphics-Object\obj\Debug\Graphics-Object.exe
 C:\Users\ashis\Desktop\Graphics-Object\obj\Debug\Graphics-Object.pdb
+C:\Users\ashis\Desktop\Graphics-Object\bin\Debug\Graphics-Object.xml

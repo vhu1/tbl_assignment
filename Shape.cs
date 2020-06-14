@@ -20,13 +20,21 @@ namespace Graphics_Object
             
 
     }
-
+    /// <summary>
+    /// Interface that implements by all factory class to draw respective shapes
+    /// </summary>
     interface ICustomObject
     {
         void draw(PaintEventArgs e , string dimension , string position);
     }
     class Circle : ICustomObject
     {
+        /// <summary>
+        /// This is draw method for circle factory class
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="dimension"></param>
+        /// <param name="position"></param>
         public void draw(PaintEventArgs e, string dimension , string position)
         {
             string[] splitString = dimension.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
@@ -39,6 +47,12 @@ namespace Graphics_Object
     }
     class Triangle : ICustomObject
     {
+        /// <summary>
+        /// This is draw method that draw triangle in triangle factory class
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="dimension"></param>
+        /// <param name="position"></param>
         public void draw(PaintEventArgs e, string dimension, string position)
         {
             string[] splitString = dimension.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
@@ -71,6 +85,12 @@ namespace Graphics_Object
 
     class Rectangle : ICustomObject
     {
+        /// <summary>
+        /// This is draw method that overrides the method of ICustomObject that draws rectangle.
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="dimension"></param>
+        /// <param name="position"></param>
         public void draw(PaintEventArgs e , string dimension , string position)
         {
            string[] splitString =  dimension.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
@@ -93,6 +113,9 @@ namespace Graphics_Object
             return source?.IndexOf(toCheck, comp) >= 0;
         }
     }
+    /// <summary>
+    /// This class get shape type in string and makes object dynamically as per string passed;
+    /// </summary>
     class GetShapeFactory
     {
         public ICustomObject getShape(String geomObj)
